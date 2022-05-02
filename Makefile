@@ -19,20 +19,20 @@ all: install
 
 compile:
 	make -C $(KSRC) M=`pwd` modules
-	dtc -@ -I dts -O dtb -o gt9xx.dtbo gt9xx-overlay.dts
+#	dtc -@ -I dts -O dtb -o gt9xx.dtbo gt9xx-overlay.dts
 
 install: compile
 	mkdir -p $(TP)/boot/overlays
 	install -p -m 644 -D $(MODULE_NAME).ko $(MODDESTDIR)$(MODULE_NAME).ko
 	install -p -m 644 -D $(MODULE_NAME).ko $(TP)$(MODDESTDIR)$(MODULE_NAME).ko
-	install -p -m 644 -D gt9xx.dtbo /boot/overlays/
-	install -p -m 644 -D gt9xx.dtbo $(TP)/boot/overlays/
+#	install -p -m 644 -D gt9xx.dtbo /boot/overlays/
+#	install -p -m 644 -D gt9xx.dtbo $(TP)/boot/overlays/
 	
 	$(DEPMOD) -a ${KVER}
 
 clean:
 	make -C $(KSRC) M=`pwd` clean
 	rm $(MODDESTDIR)$(MODULE_NAME).ko
-	rm /boot/overlays/gt9xx.dtbo
-	rm gt9xx.dtbo
+#	rm /boot/overlays/gt9xx.dtbo
+#	rm gt9xx.dtbo
 	$(DEPMOD) -a ${KVER}
