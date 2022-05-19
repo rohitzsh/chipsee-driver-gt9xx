@@ -1,8 +1,7 @@
 EXTRA_CFLAGS +=-Wno-error=date-time
 EXTRA_CFLAGS +=-Wno-date-time
 DEPMOD  = /sbin/depmod
-ARCH := arm
-CROSS_COMPILE ?=
+ARCH := $(ARCH) 
 KVER  := $(shell uname -r)
 KSRC := /lib/modules/$(KVER)/build
 
