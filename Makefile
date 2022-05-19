@@ -1,9 +1,6 @@
 EXTRA_CFLAGS +=-Wno-error=date-time
 EXTRA_CFLAGS +=-Wno-date-time
 DEPMOD  = /sbin/depmod
-ARCH := $(ARCH) 
-KVER  := $(shell uname -r)
-KSRC := /lib/modules/$(KVER)/build
 
 MODULE_NAME := gt9xx
 
