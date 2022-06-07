@@ -62,16 +62,16 @@ static struct proc_dir_entry *goodix_proc_entry;
 
 static ssize_t goodix_tool_read(struct file *, char __user *, size_t, loff_t *);
 static ssize_t goodix_tool_write(struct file *, const char __user *, size_t, loff_t *);
-# if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 6, 0))
+#if (LINUX_VERSION_CODE > KERNEL_VERSION(5,6,0))
 static const struct proc_ops tool_ops = {
-	.proc_read = goodix_tool_read,
-	.proc_write = goodix_tool_write,
+    .proc_read = goodix_tool_read,
+    .proc_write = goodix_tool_write,
 };
 #else
 static const struct file_operations tool_ops = {
-	.owner = THIS_MODULE,
-	.read = goodix_tool_read,
-	.write = goodix_tool_write,
+    .owner = THIS_MODULE,
+    .read = goodix_tool_read,
+    .write = goodix_tool_write,
 };
 #endif
 
